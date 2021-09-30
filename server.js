@@ -3,11 +3,9 @@ const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 
 const app = express();
-
-app.use(logger);
-
 app.use(express.json());
 
+app.use(logger);
 app.use('/', routes);
 
 // process.env.PORT lets the port be set by Heroku
