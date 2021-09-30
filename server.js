@@ -6,7 +6,12 @@ var myLogger = function (req, res, next) {
     console.log('LOGGED')
     next()
   }
+  var myLogger2 = function (req, res, next) {
+    console.log('LOGGED2')
+    next()
+  }
 app.use(myLogger)
+app.use(myLogger2)
 app.use(express.json());
 
 app.use('/', routes);
