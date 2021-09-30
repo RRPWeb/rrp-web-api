@@ -2,7 +2,11 @@ const express = require ('express');
 const routes = require('./routes/test'); // import the routes
 
 const app = express();
-
+var myLogger = function (req, res, next) {
+    console.log('LOGGED')
+    next()
+  }
+app.use(myLogger)
 app.use(express.json());
 
 app.use('/', routes);
