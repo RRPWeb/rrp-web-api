@@ -8,7 +8,7 @@ app.use(express.json());
 app.use('/', routes);
 
 // process.env.PORT lets the port be set by Heroku
-
-app.listen(process.env.PORT || 8080, function() {
+let port = process.env.PORT || 8080
+app.listen(port, function() {
     console.log('Our app is running on port :' + port);
 })
