@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 const options= {
-  defination:{
+  definition:{
     openapi:'3.0.0',
     info:{
       title:'Apis for RRP webportal',
