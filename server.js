@@ -16,7 +16,7 @@ const options= {
     },
     servers:[
       {
-        api:'node-rvgxxv--8080.local.webcontainer.io'
+        url:'node-rvgxxv--8080.local.webcontainer.io'
       }
     ]
   },
