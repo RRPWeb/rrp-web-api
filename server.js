@@ -1,8 +1,8 @@
 const express = require('express');
 const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
-const swaggerUi = require('swagger-ui-express'),
-  swaggerSpec = require('./spec.json');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./spec.json');
 
 const app = express();
 app.use(express.json());
