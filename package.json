@@ -11,7 +11,8 @@
     "otp-generator": "^2.0.1",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6",
-    "twilio": "^3.68.0"
+    "twilio": "^3.68.0",
+    "yamljs": "^0.3.0"
   },
   "scripts": {
     "start": "nodemon server.js"
