@@ -1,3 +1,4 @@
+const YAML = require('../yamljs');
 const swaggerSpec = YAML.load('../spec.yml');
 
 const testMessege = (req,res,next) =>{
