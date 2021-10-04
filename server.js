@@ -3,7 +3,7 @@ const YAML = require('yamljs');
 const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 const swaggerUi = require('swagger-ui-express');
-export const swaggerSpec = YAML.load('spec.yml');
+const swaggerSpec = YAML.load('spec.yml');
 
 
 const app = express();
@@ -18,3 +18,4 @@ let port = process.env.PORT || 8080;
 app.listen(port, function () {
   console.log('Our app is running on port :' + port);
 });
+export default swaggerSpec
