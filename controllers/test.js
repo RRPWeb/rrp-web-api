@@ -11,7 +11,7 @@ exports.testMessege = async (req,res,next) =>{
     //     }
     // })
 
-    let [err,data] = await userService.getAllUsers()
+    let [data,err] = await userService.getAllUsers()
     if (err) {
         console.log("encountered err",err);
         res.status(500).json("Error ")
