@@ -1,7 +1,7 @@
 const userInfo = require('../repository/UserInfo');
 
 exports.getAllUsers = async () => {
-  const response = await userInfo.getUsers((err, data) => {
+  let response = await userInfo.getUsers((err, data) => {
     if (err) {
       return {
         status: '500',
