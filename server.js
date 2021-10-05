@@ -30,7 +30,7 @@ app.get("/api/test",(req,res) => {
     if(err){
       console.log(err)
     }else{
-      console.log(data)
+      res.status(200).json(data)
     }
   })
 })
