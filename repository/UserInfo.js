@@ -6,7 +6,7 @@ exports.getUsers = async ()=>{
   console.log("Inside getUsers...")
    try{
     const result = await dbcon.query(query)
-    console.log("Result is : "+ result)
+    console.log("Result is : "+ result[0])
     return "Success" 
    }catch(err){
      console.log(err)
