@@ -4,6 +4,7 @@ const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 const swaggerUi = require('swagger-ui-express');
 const apiSpec = YAML.load('spec.yml');
+const getUsers = require('../repository/UserInfo')
 
 
 const app = express();
