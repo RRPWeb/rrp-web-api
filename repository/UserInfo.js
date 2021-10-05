@@ -6,10 +6,10 @@ const getUsers = ()=>{
   console.log("Inside getUsers...")
   dbcon.query(query, (err, rows) => {
     if (err) {
-      return "error"
+      console.log("Error")
      
     } else {
-      return rows
+      console.log(rows)
     }
   });
 }
