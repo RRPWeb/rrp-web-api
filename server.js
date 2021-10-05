@@ -22,14 +22,15 @@ app.get('/',(req,res) =>{
 })
 
 app.get("/api/test",(req,res) => {
-  const query="SELECT COUNT(*) as otpCount FROM `sql6440358`.`USER_OTP`"
-  dbcon.query(query,(err,data) => {
+  const query2="SELECT COUNT(*) as otpCount FROM `lJEpEVWywz`.`USER_INFO`"
+  dbcon.query(query2,(err,data) => {
     if(err){
       console.log(err)
     }else{
-      res.status(200).json(data)
+      console.log(data)
     }
   })
+    res.status(200).json("Success")
 })
 app.use('/', routes);
 
