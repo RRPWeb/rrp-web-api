@@ -3,7 +3,7 @@ const YAML = require('yamljs');
 const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 const swaggerUi = require('swagger-ui-express');
-const swaggerSpec = YAML.load('spec.yml');
+const apiSpec = YAML.load('spec.yml');
 
 
 const app = express();
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(logger);
 app.get('/',(req,res) =>{
-  res.status(200).json(swaggerSpec)
+  res.status(200).json(apiSpec)
 })
 app.use('/', routes);
 
