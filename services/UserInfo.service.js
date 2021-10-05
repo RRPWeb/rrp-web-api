@@ -15,6 +15,3 @@ exports.getAllUsers = async () => {
   return response;
 };
 
-module.exports = {
-  getAllUsers,
-};
