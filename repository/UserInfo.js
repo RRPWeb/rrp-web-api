@@ -1,5 +1,5 @@
 
-import dbcon from './DbConnection'
+const dbcon =require('./DbConnection')
 const query ="SELECT * FROM `sql6440358`.`USER_INFO`";
 
 const getUsers = ()=>{
