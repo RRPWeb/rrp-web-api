@@ -11,6 +11,9 @@ app.use(express.json());
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(logger);
+app.get('/',(req,res) =>{
+  res.status(200).json(swaggerSpec)
+})
 app.use('/', routes);
 
 // process.env.PORT lets the port be set by Heroku
