@@ -9,7 +9,7 @@ const apiSpec = YAML.load('spec.yml');
 const app = express();
 app.use(express.json());
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
 app.use(logger);
 app.get('/',(req,res) =>{
   res.status(200).json(apiSpec)
