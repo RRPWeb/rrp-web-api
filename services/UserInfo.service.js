@@ -11,7 +11,7 @@ exports.getAllUsers = async () => {
       return { status: '200', responseData: data };
     }
   });
-
+  console.log(response)
   return response;
 };
 
