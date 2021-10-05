@@ -6,6 +6,5 @@ const testMessege = (req,res,next) =>{
 
 
 module.exports={
-    testMessege,
-    specResponse
+    testMessege
 }
