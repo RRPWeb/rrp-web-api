@@ -2,16 +2,16 @@
 const dbcon =require('./DbConnection')
 const query ="SELECT * FROM `lJEpEVWywz`.`USER_INFO`";
 
-const getUsers = (result)=>{
+exports.getUsers = async ()=>{
   console.log("Inside getUsers...")
-  dbcon.query(query, (err, rows) => {
+  return await dbcon.query(query, (err, rows) => {
     if (err) {
-      result(null, err);
+     return err
      
     } else {
-      result(null, rows)
+      return rows
     }
   });
 }
 
-exports.getUsers = getUsers
+
