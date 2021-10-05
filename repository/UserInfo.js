@@ -1,6 +1,6 @@
 
 const dbcon =require('./DbConnection')
-const query ="SELECT * FROM `sql6440358`.`USER_INFO`";
+const query ="SELECT * FROM `lJEpEVWywz`.`USER_INFO`";
 
 const getUsers = ()=>{
   console.log("Inside getUsers...")

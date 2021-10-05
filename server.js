@@ -4,12 +4,8 @@ const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 const swaggerUi = require('swagger-ui-express');
 const apiSpec = YAML.load('spec.yml');
-const mysql = require("mysql");
-const dbcon = mysql.createPool({
-  host: "sql6.freesqldatabase.com",
-  user: "sql6440358",
-  password: "Amit@tcs11"
-});
+
+
 
 const app = express();
 app.use(express.json());
@@ -20,16 +16,16 @@ app.get('/',(req,res) =>{
   res.status(200).json(apiSpec)
 })
 
-app.get("/api/test",(req,res) => {
-  const query="SELECT COUNT(*) as otpCount FROM `sql6440358`.`USER_OTP`"
-  dbcon.query(query,(err,data) => {
-    if(err){
-      console.log(err)
-    }else{
-      res.status(200).json(data)
-    }
-  })
-})
+// app.get("/api/test",(req,res) => {
+//   const query="SELECT COUNT(*) as otpCount FROM `sql6440358`.`USER_OTP`"
+//   dbcon.query(query,(err,data) => {
+//     if(err){
+//       console.log(err)
+//     }else{
+//       res.status(200).json(data)
+//     }
+//   })
+// })
 app.use('/', routes);
 
 
