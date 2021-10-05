@@ -6,10 +6,10 @@ exports.getUsers = ()=>{
   return new Promise((resolve,reject)=>{
     dbcon.query(query,(error, rows, fields) => {
       if(error){
-        reject(error)
+        return reject(error)
       }else{
         console.log(rows)
-        resolve(rows)
+        return resolve(rows)
       }
     })
   })
