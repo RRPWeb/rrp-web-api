@@ -14,7 +14,20 @@ app.use(logger);
 app.get('/',(req,res) =>{
   res.status(200).json(apiSpec)
 })
+
+app.get("/api/test",(req,res) => {
+  const query="SELECT COUNT(*) as otpCount FROM `sql6440358`.`USER_OTP`"
+  con.query(query,(err,data) => {
+    if(err){
+      console.log(err)
+    }else{
+      console.log(data)
+    }
+  })
+})
 app.use('/', routes);
+
+
 
 // process.env.PORT lets the port be set by Heroku
 let port = process.env.PORT || 8080;
