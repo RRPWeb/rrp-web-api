@@ -9,7 +9,7 @@ const getUsers = ()=>{
       return "Error"
      
     } else {
-      return rows
+      return rows[0]
     }
   });
 }
