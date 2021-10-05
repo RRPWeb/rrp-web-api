@@ -5,7 +5,12 @@ const logger = require('./middlewares/logger');
 const swaggerUi = require('swagger-ui-express');
 const apiSpec = YAML.load('spec.yml');
 
-
+const mysql = require("mysql");
+const dbcon = mysql.createPool({
+  host: "remotemysql.com",
+  user: "lJEpEVWywz",
+  password: "I4Ai4A8Jhk"
+});
 
 const app = express();
 app.use(express.json());
@@ -16,16 +21,16 @@ app.get('/',(req,res) =>{
   res.status(200).json(apiSpec)
 })
 
-// app.get("/api/test",(req,res) => {
-//   const query="SELECT COUNT(*) as otpCount FROM `sql6440358`.`USER_OTP`"
-//   dbcon.query(query,(err,data) => {
-//     if(err){
-//       console.log(err)
-//     }else{
-//       res.status(200).json(data)
-//     }
-//   })
-// })
+app.get("/api/test",(req,res) => {
+  const query="SELECT COUNT(*) as otpCount FROM `sql6440358`.`USER_OTP`"
+  dbcon.query(query,(err,data) => {
+    if(err){
+      console.log(err)
+    }else{
+      res.status(200).json(data)
+    }
+  })
+})
 app.use('/', routes);
 
 
