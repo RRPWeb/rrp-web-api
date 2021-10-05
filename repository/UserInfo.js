@@ -7,7 +7,7 @@ const getUsers = ()=>{
   dbcon.query(query, (err, rows) => {
     if (err) {
       console.log(err);
-      res.status(500).json('Error while saving OTP in DB  occured !!');
+     
     } else {
       console.log(rows);
     }
