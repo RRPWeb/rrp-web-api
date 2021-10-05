@@ -1,7 +1,7 @@
 
-const getUsers = require('../repository/UserInfo')
+const userInfo = require('../repository/UserInfo')
 const testMessege = (req,res,next) =>{
-    console.log(getUsers())
+    console.log(userInfo.getUsers())
       res.status(200).json("Done")
       
 }
