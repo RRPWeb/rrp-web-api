@@ -6,10 +6,11 @@ exports.getUsers = async ()=>{
   console.log("Inside getUsers...")
   return await dbcon.query(query, (err, rows) => {
     if (err) {
-     return err
-     
+     console.log(err)
+     return "Error"
     } else {
-      return rows
+      console.log(rows)
+      return "Success"
     }
   });
 }
