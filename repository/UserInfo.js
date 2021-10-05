@@ -2,14 +2,14 @@
 const dbcon =require('./DbConnection')
 const query ="SELECT * FROM `lJEpEVWywz`.`USER_INFO`";
 
-const getUsers = ()=>{
+const getUsers = (result)=>{
   console.log("Inside getUsers...")
   dbcon.query(query, (err, rows) => {
     if (err) {
-      return "Error"
+      result(null, err);
      
     } else {
-      return rows[0]
+      result(null, rows)
     }
   });
 }
