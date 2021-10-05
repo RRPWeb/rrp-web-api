@@ -12,7 +12,7 @@ const testMessege = (req,res,next) =>{
     // })
 
     const response = userService.getAllUsers()
-    res.status(response.status).json(response.responseData)
+    res.status(200).json(response)
 
     // console.log(userInfo.getUsers())
     //   res.status(200).json("Done")
