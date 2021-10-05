@@ -1,7 +1,7 @@
 
 const userInfo = require('../repository/UserInfo')
 const userService = require('../services/UserInfo.service')
-const testMessege = (req,res,next) =>{
+exports.testMessege = async (req,res,next) =>{
     // userInfo.getUsers((err,data)=>{
     //     if(err){
     //         res.status(200).json( "Some error occurred while retrieving customers."
@@ -11,7 +11,7 @@ const testMessege = (req,res,next) =>{
     //     }
     // })
 
-    const response = userService.getAllUsers()
+    const response = await userService.getAllUsers()
     res.status(200).json(response)
 
     // console.log(userInfo.getUsers())
@@ -19,7 +19,3 @@ const testMessege = (req,res,next) =>{
       
 }
 
-
-module.exports={
-    testMessege
-}

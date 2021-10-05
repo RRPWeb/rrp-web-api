@@ -1,23 +1,20 @@
 const userInfo = require('../repository/UserInfo');
 
-const getAllUsers = () => {
-  let status,responseData
-  userInfo.getUsers((err, data) => {
+exports.getAllUsers = async () => {
+  const response = await userInfo.getUsers((err, data) => {
     if (err) {
-        status= '500',
-        responseData= 'Some error occurred while retrieving customers.'
-     
+      return {
+        status: '500',
+        responseData: 'Some error occurred while retrieving customers.'
+      };
     } else {
-      status= '200',
-      responseData= data
-     
+      return { status: '200', responseData: data };
     }
   });
 
-  return {status,responseData}
+  return response;
 };
 
-
-module.exports={
-  getAllUsers
-}
+module.exports = {
+  getAllUsers,
+};
