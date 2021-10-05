@@ -26,7 +26,7 @@ app.get('/',(req,res) =>{
 
 app.get("/api/test",(req,res) => {
   const query="SELECT COUNT(*) as otpCount FROM `sql6440358`.`USER_OTP`"
-  con.query(query,(err,data) => {
+  dbcon.query(query,(err,data) => {
     if(err){
       console.log(err)
     }else{
