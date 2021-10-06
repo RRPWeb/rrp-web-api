@@ -1,6 +1,6 @@
 
 const dbcon =require('./DbConnection')
-const query ="SELECT * FROM `lJEpEVWywz`.`USER_INFO`";
+const query ="SELECT * FROM `lJEpEVWywz`.`USER_tINFO`";
 
 exports.getUsers = ()=>{
   return new Promise((resolve,reject)=>{
