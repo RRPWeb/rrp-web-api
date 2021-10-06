@@ -1,6 +1,6 @@
 
 const dbcon =require('./DbConnection')
-const query ="SELECT * FROM `lJEpEVWywz`.`USER_tINFO`";
+const query ="SELECT * FROM `lJEpEVWywz`.`USER_INFO`";
 
 const execDql = ()=>{
   return new Promise((resolve,reject)=>{
