@@ -1,15 +1,17 @@
 const express = require('express');
 const YAML = require('yamljs');
+const path = require('path');
 const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 const swaggerUi = require('swagger-ui-express');
-const apiSpec = YAML.load('spec.yml');
-// const spec = path.join(__dirname, 'spec.yml');
+// const apiSpec = YAML.load('spec.yml');
+
 const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const OpenApiValidator = require('express-openapi-validator');
 
+const apiSpec = path.join(__dirname, 'spec.yml');
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
