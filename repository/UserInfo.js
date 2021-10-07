@@ -1,24 +1,10 @@
 
-const dbcon =require('./DbConnection')
-const query ="SELECT * FROM `lJEpEVWywz`.`USER_INFO`";
-
-const execDql = ()=>{
-  return new Promise((resolve,reject)=>{
-    dbcon.query(query,(error, rows, fields) => {
-      if(error){
-        return reject(error)
-      }else{
-        console.log(rows)
-        return resolve(rows)
-      }
-    })
-  })
-  
-}
+const dbHelper =require('./DbConnection')
 
 exports.getUsers = async () => {
+  const sql ="SELECT * FROM `lJEpEVWywz`.`USER_INFO`";
   try{
-      const response = await execDql()
+      const response = await dbHelper.execDql(sql)
       console.log(response)
       return response
     }catch(err){
