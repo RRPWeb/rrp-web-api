@@ -1,17 +1,12 @@
-swagger: "2.0"
+openapi: "3.0.0"
 info:
- 
+  title: "RRP Web API "
   description: "This is documentation for the RRP apis it can be used to create webapps and mobile applications . The provided apis provide information and operation for collaboration between registered members of RRP it also provides information of activists and party activities for general public "
   version: "1.0.0"
-  title: "RRP Web API "
-  termsOfService: "http://swagger.io/terms/"
-  contact:
-    email: "apiteam@swagger.io"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "petstore.swagger.io"
-basePath: "/v2"
+
+servers:
+  - url: https://rrp-web-api.herokuapp.com/
+    description: Dev server
 tags:
 - name: "pet"
   description: "Everything about your Pets"
@@ -25,9 +20,7 @@ tags:
   externalDocs:
     description: "Find out more about our store"
     url: "http://swagger.io"
-schemes:
-- "https"
-- "http"
+
 paths:
   /pet:
     post:
