@@ -23,9 +23,7 @@ app.use(cors());
 app.use(limiter);
 app.use(
   OpenApiValidator.middleware({
-    apiSpec: './spec.yml',
-    validateRequests: true, // (default)
-    validateResponses: false, // false by default
+    apiSpec: './spec.yml'
   }),
 );
 app.use((err, req, res, next) => {
