@@ -36,7 +36,7 @@ app.use(cors());
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
 app.use(logger);
-app.use('/', apiSpec);
+app.use('/', express.static(apiSpec));
 // app.get('/', (req, res) => {
 //   res.status(200).json(apiSpec);
 // });
