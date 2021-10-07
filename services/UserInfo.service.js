@@ -1,4 +1,4 @@
-const userInfo = require('../repository/UserInfo');
+const userInfo = require('../repositories/UserInfo');
 
 exports.getAllUsers = async () => {
   

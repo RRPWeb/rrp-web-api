@@ -1,5 +1,5 @@
 
-const dbHelper =require('./DbConnection')
+const dbHelper =require('./DbHelper')
 
 exports.getUsers = async () => {
   const sql ="SELECT * FROM `lJEpEVWywz`.`USER_INFO`";
