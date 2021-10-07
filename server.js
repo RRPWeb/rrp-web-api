@@ -4,7 +4,7 @@ const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 const swaggerUi = require('swagger-ui-express');
 const apiSpec = YAML.load('spec.yml');
-const spec = path.join(__dirname, 'spec.yml');
+// const spec = path.join(__dirname, 'spec.yml');
 const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(helmet());
 app.use(cors());
 app.use(limiter);
-app.use('/', express.static(spec));
+app.use('/', express.static(apiSpec));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
 app.use(logger);
 // app.get('/', (req, res) => {
