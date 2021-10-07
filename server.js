@@ -25,7 +25,7 @@ app.use(
   OpenApiValidator.middleware({
     apiSpec: './spec.yml',
     validateRequests: true, // (default)
-    validateResponses: true, // false by default
+    validateResponses: false, // false by default
   }),
 );
 app.use((err, req, res, next) => {
