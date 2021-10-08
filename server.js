@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(cors());
-app.use(limiter);
+//app.use(limiter);
 app.use(
   OpenApiValidator.middleware({
     apiSpec: './spec.yml'
