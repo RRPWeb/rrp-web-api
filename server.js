@@ -20,19 +20,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(cors());
-// app.use(limiter);
-// app.use(
-//   OpenApiValidator.middleware({
-//     apiSpec: './spec.yml'
-//   }),
-// );
-// app.use((err, req, res, next) => {
-//   console.error(err); // dump error to console for debug
-//   res.status(err.status || 500).json({
-//     message: err.message,
-//     errors: err.errors,
-//   });
-// });
+app.use(limiter);
+app.use(
+  OpenApiValidator.middleware({
+    apiSpec: './spec.yml'
+  }),
+);
+app.use((err, req, res, next) => {
+  console.error(err); // dump error to console for debug
+  res.status(err.status || 500).json({
+    message: err.message,
+    errors: err.errors,
+  });
+});
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
 app.use(logger);
