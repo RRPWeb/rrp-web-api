@@ -25,30 +25,30 @@ paths:
       description: Indian citizens above 23 years age , not employed in govt job can register
       operationId: getSignInOtp
       parameters:
-        -name: voterId
-         in: query
-         description: EPIC number on voter card
-         required: true
-         schema:
-          type: string
-        -name: phoneNumber
-         in: query
-         description: Ten digit indian phone number for getting otp
-         required: true
-         schema:
-          type: string
-        -name: ageQualifier
-         in: query
-         description: Declaration as yes or no for above 23 years age
-         required: true
-         schema:
-          type: boolean
-        -name: isGovtEmployee
-         in: query
-         description: Declaration as yes/no for being in a government service
-         required: true
-         schema:
-          type: boolean
+        - in: query
+          name: voterId
+          description: EPIC number on voter card
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: phoneNumber
+          description: Ten digit indian phone number for getting otp
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: ageQualifier
+          description: Declaration as yes or no for above 23 years age
+          required: true
+          schema:
+            type: boolean
+        - in: query
+          name: isGovtEmployee
+          description: Declaration as yes/no for being in a government service
+          required: true
+          schema:
+            type: boolean
       responses:
         '200':
           description: successful operation
