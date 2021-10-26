@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const OpenApiValidator = require('express-openapi-validator');
-const otproutes = require('./routes/test'); 
+const otproutes = require('./routes/otp'); 
 const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 
