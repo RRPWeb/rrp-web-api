@@ -17,7 +17,7 @@ tags:
   - name: otp
     description: Generates otp for various secure operation
 paths:
-  otp/signin:
+  /otp/signin:
     get:
       tags:
         - otp
