@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OtpResponse'
+                $ref: '#/components/schemas/BasicApiResponse'
         '400':
           description: Invalid parameters
         
@@ -66,18 +66,15 @@ externalDocs:
   url: 'http://swagger.io'
 components:
   schemas:
-    OtpResponse:
+    BasicApiResponse:
       type: object
       properties:
-        otp:
+        messege:
           type: string
-          description: the actual opt tobe used
-        purpose:
+          description: success or failure 
+        error:
           type: string
-          description: purpose for which the otp can be used
-        validity:
-          type: string
-          description: Duration for which the otp is valid 
+          description: Cause of error 
   requestBodies:
     Pet:
       content:
