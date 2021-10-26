@@ -37,9 +37,9 @@ app.use((err, req, res, next) => {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
 app.use(logger);
 
-app.get('/', (req, res) => {
-  res.status(200).json(apiSpec);
-});
+// app.get('/', (req, res) => {
+//   res.status(200).json(apiSpec);
+// });
 
 app.use('/', routes);
 
