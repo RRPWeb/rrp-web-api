@@ -16,6 +16,8 @@ servers:
 tags:
   - name: otp
     description: Generates otp for various secure operation
+  - name: member
+    description: Operations related to member
 paths:
   /otp/signin:
     get:
