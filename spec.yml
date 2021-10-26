@@ -58,7 +58,30 @@ paths:
                 $ref: '#/components/schemas/BasicApiResponse'
         '400':
           description: Invalid parameters
-        
+  /otp/login:
+    get:
+      tags:
+        - otp
+      summary: Generate otp to login a registered user
+      description: should be used after signin
+      operationId: getLoginOtp
+      parameters:
+        - in: query
+          name: phoneNumber
+          description: Ten digit indian phone number for getting otp
+          required: true
+          schema:
+            type: string
+              responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicApiResponse'
+        '400':
+          description: Invalid parameters
+       
 
 
 externalDocs:

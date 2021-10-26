@@ -4,5 +4,5 @@ const otpController = require('../controllers/otp.controller')
 
 
 otprouter.get("/signin",otpController.signinOtp)
-
+otprouter.get("/login",otpController.loginOtp)
 module.exports = otprouter
