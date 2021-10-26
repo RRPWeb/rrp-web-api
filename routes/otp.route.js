@@ -1,6 +1,6 @@
 const express = require('express')
 const otprouter  = express.Router()
-const otpController = require('../controllers/otpController')
+const otpController = require('../controllers/otp.controller')
 
 
 otprouter.get("/signin",otpController.signinOtp)

@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const OpenApiValidator = require('express-openapi-validator');
-const otproutes = require('./routes/otp'); 
+const otpRoutes = require('./routes/otp.route'); 
 const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 
@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', routes);
-app.use('/otp/', otproutes);
+app.use('/otp/', otpRoutes);
 
 // process.env.PORT lets the port be set by Heroku
 let port = process.env.PORT || 8080;
