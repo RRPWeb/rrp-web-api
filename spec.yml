@@ -20,7 +20,7 @@ paths:
   otp/signin:
     get:
       tags:
-        -otp
+        - otp
       summary: Generate otp for registering a new user
       description: Indian citizens above 23 years age , not employed in govt job can register
       operationId: getSignInOtp
