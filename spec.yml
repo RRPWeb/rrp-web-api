@@ -72,7 +72,7 @@ paths:
           required: true
           schema:
             type: string
-              responses:
+      responses:
         '200':
           description: successful operation
           content:
