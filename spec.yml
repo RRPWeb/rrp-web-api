@@ -80,9 +80,10 @@ paths:
               type: object
               properties:
                 userPhoneNum:
-                  description: registered phone number
+                  description: Registered 10 digit phone number
                   type: string
                 password:
+                  description: Generated otp for login
                   type: string
       responses:
         '200':
