@@ -15,7 +15,7 @@ servers:
     url: https://rrp-web-api.herokuapp.com/
 tags:
   - name: auth
-    description: Generates otp for various secure operation
+    description: Apis for authentication to access secure apis 
   - name: member
     description: Operations related to member
 paths:
@@ -47,7 +47,7 @@ paths:
       tags:
         - auth
       summary: Generate otp to login a registered user
-      description: should be used after signin
+      description: Should be used after successful signin
       operationId: getLoginOtp
       parameters:
         - in: query
@@ -70,7 +70,7 @@ paths:
       tags:
         - auth
       summary: Login to access the secure resources
-      description: should be used after signin
+      description: Should be used after success signin
       operationId: login
       requestBody:
         required: true
