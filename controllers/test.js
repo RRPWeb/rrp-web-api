@@ -1,7 +1,7 @@
 
 var request = require('request');
 const userService = require('../services/UserInfo.service')
-const imageClient = require('../clients/image.client')
+const imageClient = require('../clients/extFile.client')
 exports.testMessege = async (req,res,next) =>{
     // let response = await userService.getAllUsers()
     // res.status(200).json(response)
