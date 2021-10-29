@@ -80,6 +80,34 @@ paths:
               type: object
               properties:
                 userPhoneNum:
+                  description: registered phone number
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid username or password
+  /auth/signin:
+    post:
+      tags:
+        - auth
+      summary: Signin api for a new user 
+      description: Should be used after generating sign in otp
+      operationId: signin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userPhoneNum:
                   type: string
                 password:
                   type: string

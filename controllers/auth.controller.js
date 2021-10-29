@@ -34,3 +34,11 @@ exports.login = (req,res,next) => {
   tokenList[refreshToken] = response
   res.status(200).json(response);
 }
+
+exports.signin = (req,res,next) => {
+  const {name,userPhoneNum,password,ageQualifier,isGovtEmployee} = req.body;
+  const response = {
+    messege :"User is registered"
+  }
+  res.status(201).json(response);
+}
