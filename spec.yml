@@ -45,7 +45,7 @@ paths:
   /auth/otp/login:
     get:
       tags:
-        - aut
+        - auth
       summary: Generate otp to login a registered user
       description: should be used after signin
       operationId: getLoginOtp
