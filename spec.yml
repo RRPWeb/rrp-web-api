@@ -65,6 +65,35 @@ paths:
                 $ref: '#/components/schemas/BasicApiResponse'
         '400':
           description: Invalid parameters
+  /auth/login:
+    get:
+      tags:
+        - auth
+      summary: Login to access the secure resources
+      description: should be used after signin
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userPhoneNum:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid username or password
+
+
 externalDocs:
   description: Find out more about Swagger
   url: 'http://swagger.io'
@@ -79,6 +108,15 @@ components:
         error:
           type: string
           description: Cause of error 
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Short lived jwt token for accesing secure resource 
+        refreshToken:
+          type: string
+          description: Token with longer validity to regenerate the token
   requestBodies:
     Pet:
       content:
