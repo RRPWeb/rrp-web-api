@@ -121,7 +121,7 @@ paths:
                 $ref: '#/components/schemas/LoginResponse'
         '401':
           description: Invalid username or password
-  /member/basicinfo:
+  /member:
     get:
       tags:
         - member
