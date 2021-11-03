@@ -132,7 +132,8 @@ paths:
         - in: query
           name: memberPerPage
           description: Number should be less than 10
-          required: true
+          required: false
+          default: 5
           schema:
             type: integer
             minimum: 1

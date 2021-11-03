@@ -12,6 +12,7 @@ Public apis will provide information regarding activists and party activity for 
 # Demo and Hosting
 
 https://rrp-web-api.herokuapp.com/
+https://rrp-web-api.herokuapp.com/api-docs
 
 # Project structure
 
