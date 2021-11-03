@@ -125,10 +125,18 @@ paths:
     get:
       tags:
         - member
-      summery: Api to fetch basic info of a user
-      description:  This is a unsecure api and it only gives partial information about a member open to all
+      summery: Api to fetch basic info of all members
+      description:  This is a unsecure api and it only gives partial information about all members in a paginated manner it is open to all
       operationId: getBasicInfo
       responses:
+        - in: query
+          name: memberPerPage
+          description: Number should be less than 10
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10
         '200':
           description: successful operation
           content:
