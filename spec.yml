@@ -121,7 +121,20 @@ paths:
                 $ref: '#/components/schemas/LoginResponse'
         '401':
           description: Invalid username or password
-
+  /member/basicinfo:
+    get:
+      tags:
+        - member
+      summery: Api to fetch basic info of a user
+      description:  This is a unsecure api and it only gives partial information about a member open to all
+      operationId: getBasicInfo
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicApiResponse'
 
 externalDocs:
   description: Find out more about Swagger
