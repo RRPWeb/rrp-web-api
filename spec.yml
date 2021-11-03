@@ -125,7 +125,7 @@ paths:
     get:
       tags:
         - member
-      summery: Api to fetch basic info of all members
+      summary: Api to fetch basic info of all members
       description:  This is a unsecure api and it only gives partial information about all members in a paginated manner it is open to all
       operationId: getBasicInfo
       parameters:
@@ -145,6 +145,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BasicApiResponse'
+        '401':
+          description: Invalid parameter
+    # post:
+    #   tags:
+    #     - member
+    #   summary: Add basic info (constituency information) for a member
+    #   description: 
 
 externalDocs:
   description: Find out more about Swagger
