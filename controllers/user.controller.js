@@ -1,3 +1,6 @@
 exports.basicInfo = (req,res,next) =>{
-  res.status(200).json('Successful operation')
+  const response = {
+    messege : 'Successful operation'
+  }
+  res.status(200).json(response)
 }
