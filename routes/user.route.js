@@ -3,6 +3,6 @@ const userRouter  = express.Router()
 const userController = require('../controllers/user.controller')
 
 
-authRouter.get("/",userController.basicInfo)
+userRouter.get("/",userController.basicInfo)
 
 module.exports = userRouter
