@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const tokenList = {}
+const tokenList = []
 const config = require('../config/config.json')
 
 exports.signinOtp =  (req,res,next) =>{
@@ -25,6 +25,7 @@ exports.login = (req,res,next) => {
       accessLevel
     }
   // do the database authentication here, with user name andpassword combination.
+
   const token = jwt.sign(user, config.secret, { expiresIn:config.tokenLife})
   const refreshToken = jwt.sign(user, config.refreshTokenSecret,{ expiresIn: config.refreshTokenLife})
   const response = {
@@ -36,7 +37,7 @@ exports.login = (req,res,next) => {
 }
 
 exports.signin = (req,res,next) => {
-  const {name,userPhoneNum,password,ageQualifier,isGovtEmployee} = req.body;
+  const {name,userPhoneNum,otp,ageQualifier,isGovtEmployee} = req.body;
   const response = {
     messege :"User is registered"
   }

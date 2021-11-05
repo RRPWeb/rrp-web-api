@@ -21,6 +21,11 @@ https://rrp-web-api.herokuapp.com/api-docs
 - controllers : first layer to recieve request and send it to service layer 
 - services : holds business logic
 - repositories : code to do some database operation 
+- clients : code to connect with some external apis 
+- config : comfig params 
+
+spec.yml : The openAPI3 spec for the API 
+server.js : Starting point of the project 
 
 
 

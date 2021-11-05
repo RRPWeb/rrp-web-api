@@ -16,8 +16,8 @@ servers:
 tags:
   - name: auth
     description: Apis for authentication to access secure apis 
-  - name: member
-    description: Operations related to member
+  - name: user
+    description: Operations related to user
 paths:
   /auth/otp/signin:
     get:
@@ -82,7 +82,7 @@ paths:
                 userPhoneNum:
                   description: Registered 10 digit phone number
                   type: string
-                password:
+                otp:
                   description: Generated otp for login
                   type: string
       responses:
@@ -110,8 +110,14 @@ paths:
               properties:
                 userPhoneNum:
                   type: string
-                password:
+                otp:
                   type: string
+                name:
+                  type: string
+                ageQualifier:
+                  type: boolean
+                isGovtEmployee:
+                  type: boolean
       responses:
         '200':
           description: successful operation
@@ -121,10 +127,11 @@ paths:
                 $ref: '#/components/schemas/LoginResponse'
         '401':
           description: Invalid username or password
-  /member:
+
+  /user:
     get:
       tags:
-        - member
+        - user
       summary: Api to fetch basic info of all members
       description:  This is a unsecure api and it only gives partial information about all members in a paginated manner it is open to all
       operationId: getBasicInfo
