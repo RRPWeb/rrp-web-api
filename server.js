@@ -6,6 +6,7 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const OpenApiValidator = require('express-openapi-validator');
 const authRoutes = require('./routes/auth.route'); 
+const userRoutes = require('./routes/user.route'); 
 const routes = require('./routes/test'); // import the routes
 const logger = require('./middlewares/logger');
 
