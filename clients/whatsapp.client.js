@@ -3,6 +3,7 @@ const authToken = '[Redacted]';
 const client = require('twilio')(accountSid, authToken);
 
 exports.sendMsg= async ()=>{
+  console.log("in whatsapp client")
   client.messages
       .create({
          body: 'Hello there from twilio!',
