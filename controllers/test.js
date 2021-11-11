@@ -15,8 +15,8 @@ exports.testMessege = async (req,res,next) =>{
     // let image = await imageClient.getFile(imageUrl)
 
     // req.pipe(image).pipe(res);
-    await waClient.sendWaMsg();
+    let msg = await waClient.sendWaMsg();
 
-
+    res.status(200).json(msg)
 }
 

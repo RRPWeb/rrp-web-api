@@ -9,4 +9,5 @@ exports.sendWaMsg= ()=>{
          to: 'whatsapp:+919094763431'
        })
       .then(message => console.log(message.sid));
+      return 'Success'
 }
