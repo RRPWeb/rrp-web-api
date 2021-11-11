@@ -15,7 +15,7 @@ exports.testMessege = async (req,res,next) =>{
     // let image = await imageClient.getFile(imageUrl)
 
     // req.pipe(image).pipe(res);
-    let msg = await smClient.sendMail();
+    let msg = await smsClient.sendMail();
 
     res.status(200).json(msg)
 }
