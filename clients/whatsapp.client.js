@@ -6,7 +6,7 @@ exports.sendMsg= async ()=>{
   console.log("in whatsapp client")
   client.messages
       .create({
-         body: 'Hello there from twilio!',
+         body: 'Hello there from twilio RRP!',
          from: 'whatsapp:+14155238886',  
          to: 'whatsapp:+918820904591'
        })

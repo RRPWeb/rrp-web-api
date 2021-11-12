@@ -3,6 +3,7 @@ var request = require('request');
 const userService = require('../services/UserInfo.service')
 const imageClient = require('../clients/extFile.client')
 const smsClient =require('../clients/sms.client')
+const waClient =require('../clients/whatsapp.client')
 exports.testMessege = async (req,res,next) =>{
     //image proxy ********************
     // let response = await userService.getAllUsers()
@@ -15,8 +16,8 @@ exports.testMessege = async (req,res,next) =>{
     // let image = await imageClient.getFile(imageUrl)
 
     // req.pipe(image).pipe(res);
-    let msg = await smsClient.sendsms();
-
+    //let msg = await smsClient.sendsms();
+    let msg = await waClient.sendMsg();
     res.status(200).json(msg)
 }
 
