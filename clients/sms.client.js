@@ -1,5 +1,5 @@
 const accountSid = "AC03b6aa389f02ab5db03ea074f17e3377";
-const authToken = "b4be6d57ed3e7bb87346e1324919be40";
+const authToken = "f1fb04b9d153dec126a506f56f84c5e7";
 const client = require('twilio')(accountSid, authToken);
 
 exports.sendsms= async ()=>{

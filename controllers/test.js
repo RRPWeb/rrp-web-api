@@ -2,7 +2,7 @@
 var request = require('request');
 const userService = require('../services/UserInfo.service')
 const imageClient = require('../clients/extFile.client')
-const smsClient =require('../clients/sma.client')
+const smsClient =require('../clients/sms.client')
 exports.testMessege = async (req,res,next) =>{
     //image proxy ********************
     // let response = await userService.getAllUsers()
