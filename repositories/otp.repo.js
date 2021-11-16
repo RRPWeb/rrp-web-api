@@ -24,7 +24,7 @@ exports.verifyOtp = async (phoneNumber ,clientIp,otp,type) => {
       console.log(response)
       return {data : response}
     }catch(err){
-      console.log(err)
+      console.log(err.code)
       return {error : err}
     }
 }
