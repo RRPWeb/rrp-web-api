@@ -15,6 +15,7 @@ exports.signup = async (phoneNumber,voterId,name,clientIp,otp,type)=> {
     if(!result.error){
       return {messege: 'User is registered sucessfully'}
     }
+    console.log(result.error.cod)
     return {error: 'Error occured while creating user'}
   }
   

@@ -7,10 +7,8 @@ exports.createUser = async (userId,phoneNumber ,voterId,name) => {
   const parameters = [userId,phoneNumber,voterId,name]
   try{
       const response = await dbHelper.execDml(sql,parameters)
-      console.log(response)
       return {data : response}
     }catch(err){
-      console.log(err)
       return  {error : err}
     }
 }
