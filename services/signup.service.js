@@ -15,7 +15,7 @@ exports.signup = async (phoneNumber,voterId,name,clientIp,otp,type)=> {
     if(!result.error){
       return {messege: 'User is registered sucessfully'}
     }
-    console.log(result.error.code)
+    console.log(JSON.parse(result.error).code)
     return {error: result.error.code}
   }
   
