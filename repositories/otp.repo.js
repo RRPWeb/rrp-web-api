@@ -19,8 +19,10 @@ exports.verifyOtp = async (phoneNumber ,clientIp,otp,type) => {
   const sql ="SELECT COUNT(*) AS otpRowCount FROM `lJEpEVWywz`.`OTP` WHERE `PHONE_NUM`=? AND `IP_ADDRESS` =? AND `OTP`=? AND `TYPE`=? AND `EXPIRES_AT`>CURRENT_TIME()";
 
   const parameters = [phoneNumber,clientIp,otp,type]
-
+  try{
       const response = await dbHelper.execDql(sql,parameters)
-      return response
-    
+      return {data : response}
+    }catch(err){
+      return {error : err}
+    }
 }
