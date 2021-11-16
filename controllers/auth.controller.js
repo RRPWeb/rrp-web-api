@@ -1,11 +1,14 @@
 const jwt = require('jsonwebtoken')
 const tokenList = []
-const config = require('../config/config.json')
+const config = require('../configs/config.json')
+const otpSevice = require('../services/otp.service')
+const ipware = require('ipware')
 
-exports.signinOtp =  (req,res,next) =>{
-  let response = {
-    messege: 'success'
-  }
+exports.signinOtp = async (req,res,next) =>{
+  const  clientIp = ipware.getIP(req)
+  const phNum = req.query.phoneNumber
+  let response = await otpSevice.createOtp(phNum,clientIp,config.tokenLife,'SIGNUP')
+
   res.status(200).json(response)
 
 }
