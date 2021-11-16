@@ -40,8 +40,8 @@ exports.login = (req,res,next) => {
 }
 
 exports.signin = async (req,res,next) => {
-  const {name,userPhoneNum,otp,ageQualifier,isGovtEmployee} = req.body;
+  const {name,userPhoneNum,voterId,otp,ageQualifier,isGovtEmployee} = req.body;
   const  clientIp = get_ip(req).clientIp
-  const response = await signupSevice.signup(userPhoneNum,clientIp,otp,'SIGNUP')
+  const response = await signupSevice.signup(userPhoneNum,voterId,name,clientIp,otp,'SIGNUP')
   res.status(201).json(response);
 }

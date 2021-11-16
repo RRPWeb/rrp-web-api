@@ -108,7 +108,11 @@ paths:
             schema:
               type: object
               properties:
+                name:
+                  type: string
                 userPhoneNum:
+                  type: string
+                voterId:
                   type: string
                 otp:
                   type: string
