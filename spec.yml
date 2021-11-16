@@ -206,7 +206,11 @@ components:
       description: List of user object
       required: true
   securitySchemes:
-    bearerAuth:
+    authToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    refreshToken:
       type: http
       scheme: bearer
       bearerFormat: JWT
