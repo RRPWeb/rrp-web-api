@@ -21,10 +21,10 @@ exports.verifyOtp = async (phoneNumber ,clientIp,otp,type) => {
   const parameters = [phoneNumber,clientIp,otp,type]
   try{
       const response = await dbHelper.execDql(sql,parameters)
-      console.log(response)
+      console.log('response is :'+ response)
       return {data : response}
     }catch(err){
-      console.log(err.code)
+      console.log('error code is :'+err.code)
       return {error : err}
     }
 }

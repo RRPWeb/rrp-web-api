@@ -16,7 +16,6 @@ exports.verifyOtp = async (phoneNumber ,clientIp,otp,type)=> {
   
   const result = await otpRepo.verifyOtp(phoneNumber,clientIp,otp,type)
   if(!result.error){
-    console.log(result.data[0].otpRowCount)
     if (result.data[0].otpRowCount==1){
       return true
     }
