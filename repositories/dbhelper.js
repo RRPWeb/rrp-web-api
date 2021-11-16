@@ -9,7 +9,7 @@ exports.execDql = (sql,parameters=[])=>{
   return new Promise((resolve,reject)=>{
     dbcon.query(sql,parameters,(error, rows, fields) => {
       if(error){
-        return reject(error)
+        return reject(error.code)
       }else{
         return resolve(rows)
       }
