@@ -5,7 +5,8 @@ const otpSevice = require('../services/otp.service')
 var get_ip = require('ipware')().get_ip;
 
 exports.signinOtp = async (req,res,next) =>{
-  const  clientIp = get_ip(req)
+  const  clientIp = get_ip(req).clientIp
+
   const phNum = req.query.phoneNumber
   let response = await otpSevice.createOtp(phNum,clientIp,config.tokenLife,'SIGNUP')
 
