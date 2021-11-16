@@ -16,7 +16,7 @@ exports.createOtp = async (phoneNumber ,clientIp,otp,validity,type) => {
 }
 
 exports.verifyOtp = async (phoneNumber ,clientIp,otp,type) => {
-  const sql ="SELECT COUNT(*) AS otpRowCount FROM `lJEpEVWywz`.`OTP` WHERE `PHONE_NUM`=? AND `IP_ADDRESS` =? AND `OTP`=? AND `TYPE`=? AND `EXPIRES_AT`>CURRENT_TIME()";
+  const sql ="SELECT COUNT(*) AS otpRowCount FROM `lJEpEVWywz`.`OTP` WHERE `PHONE_NUM`=? AND `IP_ADDRESS` =? AND `OTP`=? AND `TYPE`=? AND `EXPIRES_AT`>CURRENT_TIME() AND `USED`='FALSE'";
 
   const parameters = [phoneNumber,clientIp,otp,type]
   try{
