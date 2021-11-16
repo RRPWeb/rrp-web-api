@@ -2,6 +2,7 @@
 const otpRepo = require('../repositories/otp.repo')
 const smsClient =require('../clients/sms.client')
 const waClient =require('../clients/whatsapp.client')
+const { response } = require('express')
 exports.createOtp = async (phoneNumber ,clientIp,validity,type)=> {
   const otp = Math.floor(1000000 + Math.random() * 9000000)
   const result = await otpRepo.createOtp(phoneNumber,clientIp,otp,validity,type)
@@ -14,6 +15,11 @@ exports.createOtp = async (phoneNumber ,clientIp,validity,type)=> {
 exports.verifyOtp = async (phoneNumber ,clientIp,otp,type)=> {
   
   const result = await otpRepo.verifyOtp(phoneNumber,clientIp,otp,type)
+  if(!result.error){
+    if (result.data[0].otpRowCount==1){
+      return "Otp is valid"
+    }
+  }
   
-  return result
+  return "Otp is not valid"
 }
