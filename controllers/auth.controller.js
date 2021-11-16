@@ -13,7 +13,7 @@ exports.signinOtp = async (req,res,next) =>{
   res.status(200).json(response)
 
 }
-exports.loginOtp =  (req,res,next) =>{
+exports.loginOtp = async (req,res,next) =>{
   let response = await otpSevice.createOtp(phNum,clientIp,config.tokenLife,'LOGIN')
   res.status(200).json(response)
 
