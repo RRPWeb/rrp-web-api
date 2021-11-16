@@ -131,7 +131,8 @@ paths:
   /user:
     get:
       security:
-        - bearerAuth: []
+        - authToken: []
+        - refreshToken: []
       tags:
         - user
       summary: Api to fetch basic info of all members
