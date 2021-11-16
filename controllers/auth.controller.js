@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const tokenList = []
 const config = require('../configs/config.json')
 const otpSevice = require('../services/otp.service')
+const signupSevice = require('../services/signup.service')
 var get_ip = require('ipware')().get_ip;
 
 exports.signinOtp = async (req,res,next) =>{
@@ -38,10 +39,9 @@ exports.login = (req,res,next) => {
   res.status(200).json(response);
 }
 
-exports.signin = (req,res,next) => {
+exports.signin = async (req,res,next) => {
   const {name,userPhoneNum,otp,ageQualifier,isGovtEmployee} = req.body;
-  const response = {
-    messege :"User is registered"
-  }
+  const  clientIp = get_ip(req).clientIp
+  const response = await signupSevice.signup(userPhoneNum,clientIp,otp,'SIGNUP')
   res.status(201).json(response);
 }

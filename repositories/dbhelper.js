@@ -5,7 +5,7 @@ const dbcon = mysql.createPool({
   password: "I4Ai4A8Jhk"
 })
 
-exports.execDql = (sql,parameters)=>{
+exports.execDql = (sql,parameters=[])=>{
   return new Promise((resolve,reject)=>{
     dbcon.query(sql,parameters,(error, rows, fields) => {
       if(error){

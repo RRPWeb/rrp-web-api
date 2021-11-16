@@ -11,3 +11,9 @@ exports.createOtp = async (phoneNumber ,clientIp,validity,type)=> {
   
   return result
 }
+exports.verifyOtp = async (phoneNumber ,clientIp,otp,type)=> {
+  
+  const result = await otpRepo.verifyOtp(phoneNumber,clientIp,otp,type)
+  
+  return result
+}
