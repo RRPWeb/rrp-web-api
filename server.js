@@ -8,7 +8,7 @@ const OpenApiValidator = require('express-openapi-validator');
 const authRoutes = require('./routes/auth.route'); 
 const userRoutes = require('./routes/user.route'); 
 const routes = require('./routes/test'); // import the routes
-const authValidator = require('../middlewares/authvalidator');
+const authValidator = require('./middlewares/authvalidator');
 
 const apiSpec = YAML.load('spec.yml');
 const limiter = rateLimit({
