@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 
 app.use('/', routes);
 app.use('/auth/', authRoutes);
-app.use('/user/',authValidator, userRoutes);
+app.use('/user/', userRoutes);
 
 // process.env.PORT lets the port be set by Heroku
 let port = process.env.PORT || 8080;
