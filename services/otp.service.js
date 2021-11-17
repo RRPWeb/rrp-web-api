@@ -14,8 +14,8 @@ const saveAndSendOtp= async (phoneNumber ,clientIp,validity,type)=>{
 }
 exports.createOtp = async (phoneNumber ,clientIp,validity,type)=> {
   const userInfo= await userRepo.getUserByPhNum(phoneNumber)
-  if((!userInfo.data && type==='SIGNUP')||(userInfo.data && type==='LOGIN')){
-    console.log('chking :'+ JSON.stringify(userInfo))
+  if((!userInfo.data.length && type==='SIGNUP')||(userInfo.data.length && type==='LOGIN')){
+  
     return await saveAndSendOtp(phoneNumber ,clientIp,validity,type)
   }else{
     return {error : 'Operation not allowed'}
