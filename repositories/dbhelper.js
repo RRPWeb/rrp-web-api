@@ -21,6 +21,7 @@ exports.execDml = (sql,parameters)=>{
   return new Promise((resolve,reject)=>{
     dbcon.query(sql,parameters,(error, rows, fields) => {
       if(error){
+        console.log('The error code is :'+ error.code)
         return reject(error.code)
       }else{
         return resolve(rows)

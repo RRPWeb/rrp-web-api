@@ -12,3 +12,14 @@ exports.createUser = async (userId,phoneNumber ,voterId,name) => {
       return  {error : err}
     }
 }
+exports.getUserByPhNum = async (phoneNumber) => {
+  const sql ="SELECT * FROM `lJEpEVWywz`.`USER_PROFILE` WHERE `PHONE_NUM`=?";
+  
+  const parameters = [phoneNumber]
+  try{
+      const response = await dbHelper.execDql(sql,parameters)
+      return {data : response}
+    }catch(err){
+      return  {error : err}
+    }
+}
