@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
-
-module.exports = (req, res, next) => {
+const config = require('../configs/config.json')
+exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  console.log(authHeader);
+  
   if (authHeader) {
     const token = authHeader.split(" ")[1];
-    jwt.verify(token, "mysecretKey", (err, user) => {
+    jwt.verify(token, config.secret, (err, user) => {
       if (err) {
         return res.status(401).json("Token is not valid");
       }

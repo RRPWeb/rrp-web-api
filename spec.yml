@@ -136,7 +136,6 @@ paths:
     get:
       security:
         - authToken: []
-        - refreshToken: []
       tags:
         - user
       summary: Api to fetch basic info of all members
@@ -215,7 +214,4 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-    refreshToken:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    
