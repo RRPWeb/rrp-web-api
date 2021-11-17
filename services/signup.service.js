@@ -16,7 +16,7 @@ exports.signup = async (phoneNumber,voterId,name,clientIp,otp,type)=> {
       return {messege: 'User is registered sucessfully'}
     }
     
-    return {error: result}
+    return result.error
   }
   
   
