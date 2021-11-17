@@ -11,7 +11,7 @@ exports.getUsers = async () => {
       return  {error : err}
     }
 }
-exports.getUserByPhNum = async () => {
+exports.getUserByPhNum = async (phoneNumber) => {
   const sql ="SELECT * FROM `lJEpEVWywz`.`USER_PROFILE` WHERE `PHONE_NUM`=?";
   const parameters = [phoneNumber]
   try{
