@@ -6,10 +6,10 @@ exports.getUsers = async () => {
   try{
       const response = await dbHelper.execDql(sql)
       
-      return response.data
+      return {data : response}
     }catch(err){
      
-      return err
+      return  {error : err}
     }
 }
 
