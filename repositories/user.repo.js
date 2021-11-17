@@ -6,7 +6,7 @@ exports.getUsers = async () => {
   try{
       const response = await dbHelper.execDql(sql)
       console.log(response)
-      return {data : response}
+      return response
     }catch(err){
       
       return  {error : err}
