@@ -9,13 +9,16 @@ exports.signinOtp = async (req,res,next) =>{
   const  clientIp = get_ip(req).clientIp
 
   const phNum = req.query.phoneNumber
-  
+
   let response = await otpSevice.createOtp(phNum,clientIp,config.tokenLife,'SIGNUP')
 
   res.status(200).json(response)
 
 }
 exports.loginOtp = async (req,res,next) =>{
+  const  clientIp = get_ip(req).clientIp
+
+  const phNum = req.query.phoneNumber
   let response = await otpSevice.createOtp(phNum,clientIp,config.tokenLife,'LOGIN')
   res.status(200).json(response)
 
