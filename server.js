@@ -8,7 +8,7 @@ const OpenApiValidator = require('express-openapi-validator');
 const authRoutes = require('./routes/auth.route'); 
 const userRoutes = require('./routes/user.route'); 
 const routes = require('./routes/test'); // import the routes
-
+const authValidator = require('../middlewares/authvalidator');
 
 const apiSpec = YAML.load('spec.yml');
 const limiter = rateLimit({
@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 
 app.use('/', routes);
 app.use('/auth/', authRoutes);
-app.use('/user/', userRoutes);
+app.use('/user/',authValidator, userRoutes);
 
 // process.env.PORT lets the port be set by Heroku
 let port = process.env.PORT || 8080;
