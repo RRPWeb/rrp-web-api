@@ -5,7 +5,7 @@ exports.getUsers = async () => {
   const sql ="SELECT * FROM `lJEpEVWywz`.`USER_PROFILE`";
   try{
       let response = await dbHelper.execDql(sql)
-      response = response.map(row => (row.package = JSON.parse(row.package), row))
+      response = JSON.stringify(response)
       console.log(response)
       return response
     }catch(err){
