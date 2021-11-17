@@ -135,7 +135,7 @@ paths:
   /user:
     get:
       security:
-        - authToken: []
+        - Authorization: []
       tags:
         - user
       summary: Api to fetch basic info of all members
