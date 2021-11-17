@@ -15,8 +15,10 @@ exports.signup = async (phoneNumber,voterId,name,clientIp,otp,type)=> {
     if(!result.error){
       return {messege: 'User is registered sucessfully'}
     }
-    
-    return result.error
+    if("ER_DUP_ENTRY"===result.error){
+      return {error:'User is already registered'}
+    }
+    return {error:'Some problem occured during registratio'}
   }
   
   
