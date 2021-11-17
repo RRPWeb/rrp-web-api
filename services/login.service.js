@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const config = require('../configs/config.json')
 const otpService = require('./otp.service');
 const userRepo = require('../repositories/user.repo');
 let tokenList = []
