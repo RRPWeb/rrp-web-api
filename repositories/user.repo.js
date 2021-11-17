@@ -8,7 +8,7 @@ exports.getUsers = async () => {
       console.log(response)
       return {data : response}
     }catch(err){
-      console.log(response)
+      console.log(er)
       return  {error : err}
     }
 }
