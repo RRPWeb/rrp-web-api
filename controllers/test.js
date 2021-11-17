@@ -1,6 +1,6 @@
 
 var request = require('request');
-const userService = require('../services/UserInfo.service')
+
 const imageClient = require('../clients/extFile.client')
 const smsClient =require('../clients/sms.client')
 const waClient =require('../clients/whatsapp.client')
