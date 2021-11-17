@@ -14,6 +14,7 @@ const saveAndSendOtp= async (phoneNumber ,clientIp,validity,type)=>{
 }
 exports.createOtp = async (phoneNumber ,clientIp,validity,type)=> {
   const userInfo= await userRepo.getUserByPhNum(phoneNumber)
+  console.log(userInfo.data)
   if((!userInfo.data.length && type==='SIGNUP')||(userInfo.data.length && type==='LOGIN')){
   
     return await saveAndSendOtp(phoneNumber ,clientIp,validity,type)
