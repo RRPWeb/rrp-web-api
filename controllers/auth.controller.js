@@ -1,5 +1,4 @@
-const jwt = require('jsonwebtoken')
-const tokenList = []
+
 const config = require('../configs/config.json')
 const otpSevice = require('../services/otp.service')
 const signupSevice = require('../services/signup.service')
@@ -28,24 +27,8 @@ exports.loginOtp = async (req,res,next) =>{
 exports.login = async (req,res,next) => {
   const  clientIp = get_ip(req).clientIp
   const {userPhoneNum,otp} = req.body;
-  const accessLevel = 'member'
-  const user = {
-      userPhoneNum ,
-      accessLevel
-    }
   
-  // do the database authentication here, with user name andpassword combination.
-
-  const token = jwt.sign(user, config.secret, { expiresIn:config.tokenLife})
-  const refreshToken = jwt.sign(user, config.refreshTokenSecret,{ expiresIn: config.refreshTokenLife})
-  let response = {
-      token,
-      refreshToken
-  }
-  tokenList[refreshToken] = response
-
-  //new code 
-  response = await loginSevice.login(userPhoneNum,clientIp,otp,'LOGIN',)
+  constresponse = await loginSevice.login(userPhoneNum,clientIp,otp,'LOGIN',)
   res.status(200).json(response);
 }
 
