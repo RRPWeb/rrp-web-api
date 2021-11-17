@@ -3,6 +3,7 @@ const tokenList = []
 const config = require('../configs/config.json')
 const otpSevice = require('../services/otp.service')
 const signupSevice = require('../services/signup.service')
+const loginSevice = require('../services/login.service')
 var get_ip = require('ipware')().get_ip;
 
 exports.signinOtp = async (req,res,next) =>{
@@ -24,13 +25,15 @@ exports.loginOtp = async (req,res,next) =>{
 
 }
 
-exports.login = (req,res,next) => {
-  const {userPhoneNum,password} = req.body;
+exports.login = async (req,res,next) => {
+  const  clientIp = get_ip(req).clientIp
+  const {userPhoneNum,otp} = req.body;
   const accessLevel = 'member'
   const user = {
       userPhoneNum ,
       accessLevel
     }
+  
   // do the database authentication here, with user name andpassword combination.
 
   const token = jwt.sign(user, config.secret, { expiresIn:config.tokenLife})
@@ -40,6 +43,9 @@ exports.login = (req,res,next) => {
       refreshToken
   }
   tokenList[refreshToken] = response
+
+  //new code 
+  response = await loginSevice.login(userPhoneNum,clientIp,otp,'LOGIN',)
   res.status(200).json(response);
 }
 
