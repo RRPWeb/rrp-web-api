@@ -27,7 +27,9 @@ exports.login = async (phoneNumber, clientIp, otp, type) => {
       });
       let response = {
         token,
+        tokenLife:config.tokenLife,
         refreshToken,
+        refreshTokenLife:config.refreshTokenLife
       };
       tokenList[refreshToken] = response;
       return response
