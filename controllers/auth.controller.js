@@ -38,7 +38,7 @@ exports.login = async (req,res,next) => {
 
   const token = jwt.sign(user, config.secret, { expiresIn:config.tokenLife})
   const refreshToken = jwt.sign(user, config.refreshTokenSecret,{ expiresIn: config.refreshTokenLife})
-  const response = {
+  let response = {
       token,
       refreshToken
   }
