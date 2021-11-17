@@ -210,7 +210,7 @@ components:
       description: List of user object
       required: true
   securitySchemes:
-    authToken:
+    Authorization:
       type: http
       scheme: bearer
       bearerFormat: JWT
