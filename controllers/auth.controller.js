@@ -28,7 +28,7 @@ exports.login = async (req,res,next) => {
   const  clientIp = get_ip(req).clientIp
   const {userPhoneNum,otp} = req.body;
   
-  constresponse = await loginSevice.login(userPhoneNum,clientIp,otp,'LOGIN',)
+  const response = await loginSevice.login(userPhoneNum,clientIp,otp,'LOGIN',)
   res.status(200).json(response);
 }
 
