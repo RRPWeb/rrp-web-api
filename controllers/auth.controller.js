@@ -38,3 +38,8 @@ exports.signin = async (req,res,next) => {
   const response = await signupSevice.signup(userPhoneNum,voterId,name,clientIp,otp,'SIGNUP')
   res.status(201).json(response);
 }
+
+exports.refreshToken = async (req,res,next) => {
+  let response = {messege : 'Success'}
+  res.status(200).json(response);
+}
