@@ -131,7 +131,31 @@ paths:
                 $ref: '#/components/schemas/LoginResponse'
         '401':
           description: Invalid username or password
-
+  /auth/refreshToken:
+    post:
+      tags:
+        - auth
+      summary: Refresh auth token  
+      description: Client should use this api for maintaining the authenticated session  
+      operationId: refreshToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid username or password
   /user:
     get:
       security:
@@ -160,11 +184,6 @@ paths:
                 $ref: '#/components/schemas/BasicApiResponse'
         '401':
           description: Invalid parameter
-    # post:
-    #   tags:
-    #     - member
-    #   summary: Add basic info (constituency information) for a member
-    #   description: 
 
 externalDocs:
   description: Find out more about Swagger
