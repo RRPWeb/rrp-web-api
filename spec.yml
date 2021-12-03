@@ -133,6 +133,8 @@ paths:
           description: Invalid username or password
   /auth/refreshToken:
     post:
+      security:
+        - Authorization: []
       tags:
         - auth
       summary: Refresh auth token  
