@@ -42,7 +42,7 @@ exports.login = async (phoneNumber, clientIp, otp, type) => {
 };
 
 exports.refreshToken = (refreshTOken) => {
-  if (refreshTOken in tokenList) {
+  if (tokenList.includes(refreshTOken)) {
     let user = {
       userId: "78996433224456",
       status: "ACTIVE"
