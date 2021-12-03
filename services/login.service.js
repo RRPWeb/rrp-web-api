@@ -43,6 +43,7 @@ exports.login = async (phoneNumber, clientIp, otp, type) => {
 
 exports.refreshToken = (user, refreshToken) => {
   if (refreshToken in tokenList) {
+    console.log(user);
     const token = jwt.sign(user, config.secret, {
       expiresIn: config.tokenLife
     });
