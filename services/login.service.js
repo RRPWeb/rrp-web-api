@@ -44,10 +44,10 @@ exports.login = async (phoneNumber, clientIp, otp, type) => {
 exports.refreshToken = (user, refreshToken) => {
   if (refreshToken in tokenList) {
     const token = jwt.sign(user, config.secret, {
-      expiresIn: config.tokenLife
+      expiresIn: "5m"
     });
     const refreshTokenNew = jwt.sign(user, config.refreshTokenSecret, {
-      expiresIn: config.refreshTokenLife
+      expiresIn: "15m"
     });
     let response = {
       token,
