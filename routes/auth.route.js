@@ -8,4 +8,5 @@ authRouter.get("/otp/login", authController.loginOtp);
 authRouter.post("/login", authController.login);
 authRouter.post("/signin", authController.signin);
 authRouter.post("/refreshToken", authValidator, authController.refreshToken);
+authRouter.post("/logout", authValidator, authController.logout);
 module.exports = authRouter;

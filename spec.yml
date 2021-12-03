@@ -158,6 +158,33 @@ paths:
                 $ref: '#/components/schemas/LoginResponse'
         '401':
           description: Invalid username or password
+  /auth/logout:
+    post:
+      security:
+        - Authorization: []
+      tags:
+        - auth
+      summary: Logout user  
+      description: Invalidates the refresh token to prevent getting a access token using it
+      operationId: logout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid username or password
   /user:
     get:
       security:

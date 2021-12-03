@@ -74,3 +74,8 @@ exports.refreshToken = (req, res, next) => {
 
   res.status(200).json(response);
 };
+exports.logout = (req, res, next) => {
+  let response = loginSevice.logout(req.body.refreshToken);
+
+  res.status(200).json(response);
+};
