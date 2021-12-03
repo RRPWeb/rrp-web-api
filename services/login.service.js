@@ -60,10 +60,10 @@ exports.refreshToken = (refreshTOken) => {
       refreshToken: refreshTokenNew,
       refreshTokenLife: config.refreshTokenLife
     };
-    tokenList[refreshTokenNew] = response;
+    tokenList.push(refreshTokenNew);
     tokenList.filter((item) => item !== refreshTOken);
     return response;
   } else {
-    return { err: "TOken not valid" };
+    return { err: "TOken not valid", tokens: tokenList };
   }
 };
