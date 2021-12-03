@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const config = require("../configs/config.json");
 const otpService = require("./otp.service");
 const userRepo = require("../repositories/user.repo");
-let tokenList = [];
+let tokenList = {};
 exports.login = async (phoneNumber, clientIp, otp, type) => {
   const isOtpValid = await otpService.verifyOtp(
     phoneNumber,
@@ -31,7 +31,7 @@ exports.login = async (phoneNumber, clientIp, otp, type) => {
         refreshToken,
         refreshTokenLife: config.refreshTokenLife
       };
-      tokenList.push(refreshToken);
+      tokenList[refreshToken] = new Date();
       return response;
     }
 
@@ -41,29 +41,36 @@ exports.login = async (phoneNumber, clientIp, otp, type) => {
   return { error: "Entered OTP is invalid or expired" };
 };
 
-exports.refreshToken = (refreshTOken) => {
-  if (tokenList.includes(refreshTOken)) {
-    let user = {
-      userId: "78996433224456",
-      status: "ACTIVE"
-    };
-    let response;
+exports.refreshToken = (user, refreshToken) => {
+  if (tokenList.includes(refreshToken)) {
     const token = jwt.sign(user, config.secret, {
       expiresIn: config.tokenLife
     });
     const refreshTokenNew = jwt.sign(user, config.refreshTokenSecret, {
       expiresIn: config.refreshTokenLife
     });
-    response = {
+    let response = {
       token,
       tokenLife: config.tokenLife,
       refreshToken: refreshTokenNew,
       refreshTokenLife: config.refreshTokenLife
     };
-    tokenList.push(refreshTokenNew);
-    tokenList = tokenList.filter((item) => item !== refreshTOken);
+    tokenList[refreshTokenNew] = new Date();
+    delete tokenList[refreshToken];
     return response;
   } else {
-    return { err: "TOken not valid", tokens: tokenList };
+    return { err: "Refresh token not valid", tokens: tokenList };
+  }
+};
+
+exports.logout = (refreshToken) => {
+  if (tokenList.includes(refreshToken)) {
+    delete tokenList[refreshToken];
+    Object.keys(tokenList)
+      .filter((key) => new Date() - tokenList.key > 1800)
+      .forEach((key) => delete tokenList[key]);
+    return { messege: "User successfully logged out" };
+  } else {
+    return { err: "Refresh token not valid", tokens: tokenList };
   }
 };
