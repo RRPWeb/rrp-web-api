@@ -47,18 +47,18 @@ exports.refreshToken = (user, refreshToken) => {
     const token = jwt.sign(user, config.secret, {
       expiresIn: config.tokenLife
     });
-    // const refreshTokenNew = jwt.sign(user, config.refreshTokenSecret, {
-    //   expiresIn: "15m"
-    // });
-    // let response = {
-    //   token,
-    //   tokenLife: config.tokenLife,
-    //   refreshToken: refreshTokenNew,
-    //   refreshTokenLife: config.refreshTokenLife
-    // };
-    // tokenList[refreshTokenNew] = new Date();
-    // delete tokenList[refreshToken];
-    return { messege: "Success!!" };
+    const refreshTokenNew = jwt.sign(user, config.refreshTokenSecret, {
+      expiresIn: "15m"
+    });
+    let response = {
+      token,
+      tokenLife: config.tokenLife,
+      refreshToken: refreshTokenNew,
+      refreshTokenLife: config.refreshTokenLife
+    };
+    tokenList[refreshTokenNew] = new Date();
+    delete tokenList[refreshToken];
+    return response;
   } else {
     return { err: "Refresh token not valid", tokens: tokenList };
   }

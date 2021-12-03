@@ -66,7 +66,11 @@ exports.signin = async (req, res, next) => {
 };
 
 exports.refreshToken = (req, res, next) => {
-  let response = loginSevice.refreshToken(req.body.user, req.body.refreshToken);
+  const user = {
+    userId: req.body.user.userId,
+    status: req.body.user.status
+  };
+  let response = loginSevice.refreshToken(user, req.body.refreshToken);
 
   res.status(200).json(response);
 };
