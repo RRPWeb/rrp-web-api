@@ -61,7 +61,7 @@ exports.refreshToken = (refreshTOken) => {
       refreshTokenLife: config.refreshTokenLife
     };
     tokenList.push(refreshTokenNew);
-    tokenList.filter((item) => item !== refreshTOken);
+    tokenList = tokenList.filter((item) => item !== refreshTOken);
     return response;
   } else {
     return { err: "TOken not valid", tokens: tokenList };
