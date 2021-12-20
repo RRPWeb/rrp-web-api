@@ -1,4 +1,5 @@
 const { google } = require("googleapis");
+const path = require("path");
 const fs = require("fs");
 const SCOPES = ["https://www.googleapis.com/auth/drive"];
 const auth = new google.auth.GoogleAuth({ scopes: SCOPES });
@@ -8,9 +9,12 @@ exports.uploadFile = async () => {
     name: "rtr.png",
     parents: ["RRP-DOCS"]
   };
+  const root = path.dirname(
+    require.main.filename || process.mainModule.filename
+  );
   let media = {
     mimeType: "image/png",
-    body: fs.createReadStream("../configs/rtr.png")
+    body: fs.createReadStream(root + "/configs/rtr.png")
   };
 
   let response = await gdriveService.files.create({
