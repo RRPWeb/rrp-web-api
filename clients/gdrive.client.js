@@ -12,6 +12,7 @@ exports.uploadFile = async () => {
   const root = path.dirname(
     require.main.filename || process.mainModule.filename
   );
+  console.log(root);
   let media = {
     mimeType: "image/png",
     body: fs.createReadStream(root + "/configs/rtr.png")
