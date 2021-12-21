@@ -19,12 +19,17 @@ exports.uploadFile = async () => {
     mimeType: "image/png",
     body: fs.createReadStream(root + "/configs/rtr.png")
   };
+  let response;
 
-  let response = await gdriveService.files.create({
-    resource: fileMetaData,
-    media: media,
-    fields: "id"
-  });
+  try {
+    response = await gdriveService.files.create({
+      resource: fileMetaData,
+      media: media,
+      fields: "id"
+    });
+  } catch (err) {
+    console.log(err);
+  }
   if (response.status === 200) {
     return response.data.id;
   } else {
