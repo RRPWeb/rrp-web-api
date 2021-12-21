@@ -28,11 +28,7 @@ exports.uploadFile = async () => {
       fields: "id"
     });
   } catch (err) {
-    console.log(err);
+    console.log("error is :" + err);
   }
-  if (response.status === 200) {
-    return response.data.id;
-  } else {
-    return response.errors;
-  }
+  return "success";
 };
