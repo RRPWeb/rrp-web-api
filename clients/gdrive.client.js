@@ -4,6 +4,8 @@ const fs = require("fs");
 const SCOPES = ["https://www.googleapis.com/auth/drive"];
 const auth = new google.auth.GoogleAuth({ scopes: SCOPES });
 exports.uploadFile = async () => {
+  console.log("cashed credential" + auth.cachedCredential);
+  console.log("env cred" + process.env.GOOGLE_APPLICATION_CREDENTIALS);
   const gdriveService = google.drive({ version: "v3", auth });
   let fileMetaData = {
     name: "rtr.png",
