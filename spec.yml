@@ -218,13 +218,14 @@ paths:
        tags:
          - user 
        summary: Uploads a file.
-       consumes:
-         - multipart/form-data
-       parameters:
-         - in: formData
-           name: profileimg
-           type: file
-           description: The file to upload.
+       description: only one file can be uploaded 
+       operationId: photoUpload
+       requestBody:
+         content:
+           application/octet-stream:
+             schema:
+                type: string
+                format: binary
        responses:
         '200':
           description: successful operation
