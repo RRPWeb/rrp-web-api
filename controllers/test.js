@@ -4,6 +4,10 @@ const imageClient = require("../clients/extFile.client");
 const smsClient = require("../clients/sms.client");
 const waClient = require("../clients/whatsapp.client");
 const gdriveClient = require("../clients/gdrive.client");
+const { google } = require("googleapis");
+const getfilelist = require("google-drive-getfilelist");
+const SCOPES = ["https://www.googleapis.com/auth/drive"];
+const auth = new google.auth.GoogleAuth({ scopes: SCOPES });
 
 exports.testMessege = async (req, res, next) => {
   //image proxy ********************
@@ -19,6 +23,22 @@ exports.testMessege = async (req, res, next) => {
   // req.pipe(image).pipe(res);
   //let msg = await smsClient.sendsms();
   //  let msg = await waClient.sendMsg();
-  let msg = await gdriveClient.uploadFile();
-  res.status(200).json(msg);
+  //let msg = await gdriveClient.uploadFile();
+  getfilelist.GetFileList(
+    {
+      auth: auth,
+      fields: "files(id)",
+      id: "1vqyXxCtczOwblrCFiCxD5ExJ2smbaYLV"
+    },
+    (err, response) => {
+      if (err) {
+        console.log(err);
+        res.status(200).json(err);
+      }
+      const fileList = response.fileList.flatMap(({ files }) => files);
+      console.log(fileList);
+      res.status(200).json(fileList);
+    }
+  );
+  //res.status(200).json(msg);
 };
