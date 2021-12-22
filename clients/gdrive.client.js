@@ -17,7 +17,7 @@ exports.uploadFile = async () => {
   console.log(root);
   let media = {
     mimeType: "image/png",
-    body: fs.createReadStream(path.join(root + "configs", "rtr.png"))
+    body: fs.createReadStream(path.join(root + "//configs//rtr.png"))
   };
   let response = await gdriveService.files.create({
     resource: fileMetaData,
