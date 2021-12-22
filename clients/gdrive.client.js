@@ -9,7 +9,7 @@ exports.uploadFile = async () => {
   const gdriveService = google.drive({ version: "v3", auth });
   let fileMetaData = {
     name: "rtr.png",
-    parents: ["RRP-DOCS"]
+    parents: ["1vqyXxCtczOwblrCFiCxD5ExJ2smbaYLV"]
   };
   const root = path.dirname(
     require.main.filename || process.mainModule.filename
@@ -17,18 +17,17 @@ exports.uploadFile = async () => {
   console.log(root);
   let media = {
     mimeType: "image/png",
-    body: fs.createReadStream(root + "/configs/rtr.png")
+    body: fs.createReadStream(path.join(root + "configs", "rtr.png"))
   };
-  let response;
+  let response = await gdriveService.files.create({
+    resource: fileMetaData,
+    media: media,
+    fields: "id"
+  });
 
-  try {
-    response = await gdriveService.files.create({
-      resource: fileMetaData,
-      media: media,
-      fields: "id"
-    });
-  } catch (err) {
-    console.log("error is :" + err);
+  if (response && response.status === 200) {
+    return response.data.id;
+  } else {
+    return "error";
   }
-  return "success";
 };

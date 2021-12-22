@@ -23,22 +23,22 @@ exports.testMessege = async (req, res, next) => {
   // req.pipe(image).pipe(res);
   //let msg = await smsClient.sendsms();
   //  let msg = await waClient.sendMsg();
-  //let msg = await gdriveClient.uploadFile();
-  getfilelist.GetFileList(
-    {
-      auth: auth,
-      fields: "files(id)",
-      id: "1vqyXxCtczOwblrCFiCxD5ExJ2smbaYLV"
-    },
-    (err, response) => {
-      if (err) {
-        console.log(err);
-        res.status(200).json(err);
-      }
-      const fileList = response.fileList.flatMap(({ files }) => files);
-      console.log(fileList);
-      res.status(200).json(fileList);
-    }
-  );
-  //res.status(200).json(msg);
+  // getfilelist.GetFileList(
+  //   {
+  //     auth: auth,
+  //     fields: "files(id)",
+  //     id: "1vqyXxCtczOwblrCFiCxD5ExJ2smbaYLV"
+  //   },
+  //   (err, response) => {
+  //     if (err) {
+  //       console.log(err);
+  //       res.status(200).json(err);
+  //     }
+  //     const fileList = response.fileList.flatMap(({ files }) => files);
+  //     console.log(fileList);
+  //     res.status(200).json(fileList);
+  //   }
+  // );
+  let msg = await gdriveClient.uploadFile();
+  res.status(200).json(msg);
 };

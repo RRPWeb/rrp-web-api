@@ -218,7 +218,7 @@ paths:
        tags:
          - user 
        summary: Uploads a file.
-       description: Only one file can be uploaded 
+       description: Only one file can be uploaded at a time
        operationId: photoUpload
        requestBody:
          content:
