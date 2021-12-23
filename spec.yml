@@ -10,7 +10,6 @@ info:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 servers:
-  # Added by API Auto Mocking Plugin
   - description: Test environment
     url: https://rrp-web-api.herokuapp.com/
 tags:
@@ -213,17 +212,19 @@ paths:
                 $ref: '#/components/schemas/BasicApiResponse'
         '401':
           description: Invalid parameter
-  /photoUpload:
+  /user/photoUpload:
      post:
        tags:
          - user 
-       summary: Uploads a file.
+       summary: Uploads user's profile photo
        description: Only one file can be uploaded at a time
        operationId: photoUpload
        requestBody:
          content:
            application/octet-stream:
-             schema:
+            name: profilePhoto
+            description: Profile photo of user 
+            schema:
                 type: string
                 format: binary
        responses:

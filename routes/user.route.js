@@ -1,9 +1,8 @@
-const express = require('express')
-const userRouter  = express.Router()
-const userController = require('../controllers/user.controller')
+const express = require("express");
+const userRouter = express.Router();
+const userController = require("../controllers/user.controller");
 
+userRouter.get("/", userController.userProfiles);
+userRouter.get("/photoUpload", userController.photoUpload);
 
-
-userRouter.get("/",userController.userProfiles)
-
-module.exports = userRouter
+module.exports = userRouter;
