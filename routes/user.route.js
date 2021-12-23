@@ -3,6 +3,6 @@ const userRouter = express.Router();
 const userController = require("../controllers/user.controller");
 
 userRouter.get("/", userController.userProfiles);
-userRouter.get("/photoUpload", userController.photoUpload);
+userRouter.post("/photoUpload", userController.photoUpload);
 
 module.exports = userRouter;
