@@ -8,6 +8,9 @@
     "express": "^4.17.1",
     "express-openapi-validator": "^4.13.1",
     "express-rate-limit": "^5.4.1",
+    "express-fileupload": "^1.2.1",
+    "google-drive-getfilelist": "^1.0.5",
+    "googleapis": "92.0.0",
     "helmet": "^4.6.0",
     "ipware": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
@@ -20,9 +23,7 @@
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6",
     "twilio": "^3.71.1",
-    "yamljs": "^0.3.0",
-    "googleapis": "92.0.0",
-    "google-drive-getfilelist": "^1.0.5"
+    "yamljs": "^0.3.0"
   },
   "scripts": {
     "start": "nodemon server.js"
