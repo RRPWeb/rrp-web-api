@@ -7,5 +7,6 @@ exports.getAllUsers = async () => {
 
 exports.photoUpload = async (profilePhoto) => {
   const response = profilePhoto.name;
+  console.log(response);
   return response;
 };
