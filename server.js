@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(apiSpec));
-app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
+app.use(fileUpload());
 
 app.get("/", (req, res) => {
   res.status(200).json(apiSpec);
