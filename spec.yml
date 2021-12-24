@@ -221,12 +221,14 @@ paths:
        operationId: photoUpload
        requestBody:
          content:
-           application/octet-stream:
-            name: profilePhoto
+           multipart/form-data:
             description: Profile photo of user 
             schema:
-                type: string
-                format: binary
+                type: object
+                properties:
+                  fileName:
+                    type: string
+                    format: binary
        responses:
         '200':
           description: successful operation
