@@ -22,9 +22,20 @@ exports.uploadFile = async (filename, filetype, filepath, gfolderpath) => {
   });
 
   if (response && response.status === 200) {
-    return { fileid: response.data.id };
+    return { gdriveFileId: response.data.id };
   } else {
     console.log("Error in file upload :" + response.errors);
+    return { error: response.errors };
+  }
+};
+exports.deleteFile = async (gdrivefileId) => {
+  const response = await gdriveService.files.delete({
+    fileId: gdrivefileId
+  });
+  if (response && response.status === 200) {
+    return { msg: "success" };
+  } else {
+    console.log("Error in file deletion :" + response.errors);
     return { error: response.errors };
   }
 };
