@@ -6,7 +6,6 @@ exports.getAllUsers = async () => {
 };
 
 exports.photoUpload = async (profilePhoto) => {
-  // const response = gdriveClient.uploadFile(profilePhoto);
-  // return response;
-  return profilePhoto.tempFilePath;
+  const response = gdriveClient.uploadFile(profilePhoto);
+  return response;
 };
