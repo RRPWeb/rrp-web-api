@@ -226,7 +226,7 @@ paths:
             schema:
                 type: object
                 properties:
-                  fileName:
+                  profilePhoto:
                     type: string
                     format: binary
        responses:
