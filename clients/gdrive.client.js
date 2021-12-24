@@ -3,21 +3,19 @@ const path = require("path");
 const fs = require("fs");
 const SCOPES = ["https://www.googleapis.com/auth/drive"];
 const auth = new google.auth.GoogleAuth({ scopes: SCOPES });
-exports.uploadFile = async () => {
-  console.log("cashed credential" + auth.cachedCredential);
-  console.log("env cred" + process.env.GOOGLE_APPLICATION_CREDENTIALS);
+exports.uploadFile = async (filetoUpload) => {
   const gdriveService = google.drive({ version: "v3", auth });
   let fileMetaData = {
-    name: "rtr.png",
+    name: filetoUpload.name,
     parents: ["1vqyXxCtczOwblrCFiCxD5ExJ2smbaYLV"]
   };
-  const root = path.dirname(
-    require.main.filename || process.mainModule.filename
-  );
-  console.log(root);
+  // const root = path.dirname(
+  //   require.main.filename || process.mainModule.filename
+  // );
+  // console.log(root);
   let media = {
-    mimeType: "image/png",
-    body: fs.createReadStream(path.join(root + "//configs//rtr.png"))
+    mimeType: filetoUpload.mimetype,
+    body: fs.createReadStream(filetoUpload.tempFilePath)
   };
   let response = await gdriveService.files.create({
     resource: fileMetaData,

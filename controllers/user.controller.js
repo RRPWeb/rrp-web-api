@@ -4,7 +4,6 @@ exports.userProfiles = async (req, res, next) => {
   res.status(200).json(response);
 };
 exports.photoUpload = async (req, res, next) => {
-  console.log(req.files.profilePhoto);
   const response = await userService.photoUpload(req.files.profilePhoto);
   res.status(200).json(response);
 };
