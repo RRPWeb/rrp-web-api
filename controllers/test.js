@@ -39,6 +39,6 @@ exports.testMessege = async (req, res, next) => {
   //     res.status(200).json(fileList);
   //   }
   // );
-  let msg = await gdriveClient.deleteFile("1i-YbR8PBAviyWX4DV65z0HZDjrKRhRVF");
+  let msg = await gdriveClient.deleteFile(req.fileId);
   res.status(200).json(msg);
 };
