@@ -1,21 +1,19 @@
 const { google } = require("googleapis");
-const path = require("path");
 const fs = require("fs");
+
+//constants
 const SCOPES = ["https://www.googleapis.com/auth/drive"];
 const auth = new google.auth.GoogleAuth({ scopes: SCOPES });
-exports.uploadFile = async (filetoUpload) => {
-  const gdriveService = google.drive({ version: "v3", auth });
+const gdriveService = google.drive({ version: "v3", auth });
+
+exports.uploadFile = async (filename, filetype, filepath, gfolderpath) => {
   let fileMetaData = {
-    name: filetoUpload.name,
-    parents: ["1vqyXxCtczOwblrCFiCxD5ExJ2smbaYLV"]
+    name: filename,
+    parents: [gfolderpath]
   };
-  // const root = path.dirname(
-  //   require.main.filename || process.mainModule.filename
-  // );
-  // console.log(root);
   let media = {
-    mimeType: filetoUpload.mimetype,
-    body: fs.createReadStream(filetoUpload.tempFilePath)
+    mimeType: filetype,
+    body: fs.createReadStream(filepath)
   };
   let response = await gdriveService.files.create({
     resource: fileMetaData,
@@ -24,8 +22,8 @@ exports.uploadFile = async (filetoUpload) => {
   });
 
   if (response && response.status === 200) {
-    return response.data.id;
+    return { fileid: response.data.id };
   } else {
-    return "error";
+    return { error: response.errors };
   }
 };
