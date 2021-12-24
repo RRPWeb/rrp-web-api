@@ -32,7 +32,7 @@ exports.deleteFile = async (gdrivefileId) => {
   const response = await gdriveService.files.delete({
     fileId: gdrivefileId
   });
-  if (response && response.status === 200) {
+  if (response && response.status === 204) {
     return { msg: "success" };
   } else {
     console.log("Error in file deletion :" + response.errors);
