@@ -24,6 +24,7 @@ exports.uploadFile = async (filename, filetype, filepath, gfolderpath) => {
   if (response && response.status === 200) {
     return { fileid: response.data.id };
   } else {
+    console.log("Error in file upload :" + response.errors);
     return { error: response.errors };
   }
 };
