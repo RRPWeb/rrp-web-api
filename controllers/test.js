@@ -49,7 +49,7 @@ exports.testMessege = async (req, res, next) => {
     const fileurl = "https://drive.google.com/uc?export=view&id="+response.data
     let fileresponse = await extFileClient.getFile(fileurl)
     res.setHeader('Content-Type', 'application/pdf')
-    res.setHeader('Content-Disposition', 'inline')
+    res.setHeader('Content-Disposition', fileresponse.getHeader('Content-Disposition'))
     req.pipe(fileresponse).pipe(res)
   }else{
     res.status(500).json(response);
