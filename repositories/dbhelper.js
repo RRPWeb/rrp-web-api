@@ -1,9 +1,6 @@
 const mysql = require("mysql");
-const dbcon = mysql.createPool({
-  host: "remotemysql.com",
-  user: "lJEpEVWywz",
-  password: "I4Ai4A8Jhk"
-})
+const appenv = require("../configs/appenv.config")
+const dbcon = mysql.createPool(appenv.dbconfig.dburl)
 
 exports.execDql = (sql,parameters=[])=>{
   return new Promise((resolve,reject)=>{

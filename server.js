@@ -6,11 +6,13 @@ const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const OpenApiValidator = require("express-openapi-validator");
 const fileUpload = require("express-fileupload");
+const dotenv = require('dotenv');
 const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
 const routes = require("./routes/test"); // import the routes
 const authValidator = require("./middlewares/authvalidator");
 
+dotenv.config();
 const apiSpec = YAML.load("spec.yml");
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -36,17 +38,22 @@ app.use((err, req, res, next) => {
   });
 });
 
+//enable swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(apiSpec));
+//setuo temp directory for file upload
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 
+//give spec at base url 
 app.get("/", (req, res) => {
   res.status(200).json(apiSpec);
 });
 
+//routes
 app.use("/", routes);
 app.use("/auth/", authRoutes);
 //app.use("/user/", authValidator, userRoutes);
 app.use("/user/", userRoutes);
+app.use(["/pdf/","/img/"],routes)
 
 // process.env.PORT lets the port be set by Heroku
 let port = process.env.PORT || 8080;

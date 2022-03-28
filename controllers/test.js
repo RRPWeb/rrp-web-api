@@ -1,9 +1,10 @@
 var request = require("request");
 
-const imageClient = require("../clients/extFile.client");
+const extFileClient = require("../clients/extFile.client");
 const smsClient = require("../clients/sms.client");
 const waClient = require("../clients/whatsapp.client");
 const gdriveClient = require("../clients/gdrive.client");
+const urlService = require("../services/url.service");
 const { google } = require("googleapis");
 const getfilelist = require("google-drive-getfilelist");
 const SCOPES = ["https://www.googleapis.com/auth/drive"];
@@ -39,6 +40,17 @@ exports.testMessege = async (req, res, next) => {
   //     res.status(200).json(fileList);
   //   }
   // );
-  let msg = await gdriveClient.deleteFile(req.query.fileId);
-  res.status(200).json(msg);
+  // let msg = await gdriveClient.deleteFile(req.query.fileId);
+  // res.status(200).json("Hi");
+
+  const filename = req.params.filename;
+  const response = await urlService.getFileId(filename)
+  if(response.data){
+    const fileurl = "https://drive.google.com/uc?export=view&id="+response.data
+    let fileresponse = await extFileClient.getFile(fileurl)
+    req.pipe(fileresponse).pipe(res)
+  }else{
+    res.status(500).json(response);
+  }
+  
 };

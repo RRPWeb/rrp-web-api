@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const config = require("../configs/config.json");
+const authconfig = require("../configs/auth.config.json");
 const otpService = require("./otp.service");
 const userRepo = require("../repositories/user.repo");
 let tokenList = {};
@@ -19,17 +19,17 @@ exports.login = async (phoneNumber, clientIp, otp, type) => {
         status: result.data[0].STATUS
       };
 
-      const token = jwt.sign(user, config.secret, {
-        expiresIn: config.tokenLife
+      const token = jwt.sign(user, authconfig.secret, {
+        expiresIn: authconfig.tokenLife
       });
-      const refreshToken = jwt.sign(user, config.refreshTokenSecret, {
-        expiresIn: config.refreshTokenLife
+      const refreshToken = jwt.sign(user, authconfig.refreshTokenSecret, {
+        expiresIn: authconfig.refreshTokenLife
       });
       let response = {
         token,
-        tokenLife: config.tokenLife,
+        tokenLife: authconfig.tokenLife,
         refreshToken,
-        refreshTokenLife: config.refreshTokenLife
+        refreshTokenLife: authconfig.refreshTokenLife
       };
       tokenList[refreshToken] = new Date();
       return response;
@@ -44,17 +44,17 @@ exports.login = async (phoneNumber, clientIp, otp, type) => {
 exports.refreshToken = (user, refreshToken) => {
   if (refreshToken in tokenList) {
     console.log(user);
-    const token = jwt.sign(user, config.secret, {
-      expiresIn: config.tokenLife
+    const token = jwt.sign(user, authconfig.secret, {
+      expiresIn: authconfig.tokenLife
     });
-    const refreshTokenNew = jwt.sign(user, config.refreshTokenSecret, {
+    const refreshTokenNew = jwt.sign(user, authconfig.refreshTokenSecret, {
       expiresIn: "15m"
     });
     let response = {
       token,
-      tokenLife: config.tokenLife,
+      tokenLife: authconfig.tokenLife,
       refreshToken: refreshTokenNew,
-      refreshTokenLife: config.refreshTokenLife
+      refreshTokenLife: authconfig.refreshTokenLife
     };
     tokenList[refreshTokenNew] = new Date();
     delete tokenList[refreshToken];

@@ -3,6 +3,6 @@ const router  = express.Router()
 const testController = require('../controllers/test')
 
 
-router.get("/api/test",testController.testMessege)
+router.get("/:filename",testController.testMessege)
 
 module.exports = router

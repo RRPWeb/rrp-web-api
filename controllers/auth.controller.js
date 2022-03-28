@@ -1,4 +1,4 @@
-const config = require("../configs/config.json");
+const authconfig = require("../configs/auth.config.json");
 const otpSevice = require("../services/otp.service");
 const signupSevice = require("../services/signup.service");
 const loginSevice = require("../services/login.service");
@@ -12,7 +12,7 @@ exports.signinOtp = async (req, res, next) => {
   let response = await otpSevice.createOtp(
     phNum,
     clientIp,
-    config.tokenLife,
+    authconfig.tokenLife,
     "SIGNUP"
   );
 
@@ -25,7 +25,7 @@ exports.loginOtp = async (req, res, next) => {
   let response = await otpSevice.createOtp(
     phNum,
     clientIp,
-    config.tokenLife,
+    authconfig.tokenLife,
     "LOGIN"
   );
   res.status(200).json(response);
