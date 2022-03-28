@@ -1,5 +1,4 @@
 var request = require("request");
-
 const extFileClient = require("../clients/extFile.client");
 const smsClient = require("../clients/sms.client");
 const waClient = require("../clients/whatsapp.client");
@@ -48,8 +47,6 @@ exports.testMessege = async (req, res, next) => {
   if(response.data){
     const fileurl = "https://drive.google.com/uc?export=view&id="+response.data
     let fileresponse = await extFileClient.getFile(fileurl)
-    res.setHeader('Content-Type', fileresponse.getHeader('Content-Type'))
-    res.setHeader('Content-Disposition', fileresponse.getHeader('Content-Disposition'))
     req.pipe(fileresponse).pipe(res)
   }else{
     res.status(500).json(response);
