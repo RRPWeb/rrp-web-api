@@ -6,6 +6,7 @@ const gdriveClient = require("../clients/gdrive.client");
 const urlService = require("../services/url.service");
 const { google } = require("googleapis");
 const getfilelist = require("google-drive-getfilelist");
+
 const SCOPES = ["https://www.googleapis.com/auth/drive"];
 const auth = new google.auth.GoogleAuth({ scopes: SCOPES });
 
@@ -40,8 +41,7 @@ exports.testMessege = async (req, res, next) => {
   //   }
   // );
   // let msg = await gdriveClient.deleteFile(req.query.fileId);
-  // res.status(200).json("Hi");
-    let msg = await gdriveClient.getFileContent(req.query.fileId);
-  res.status(200).json("Hi")
-  
+ 
+
+  res.status(200).json("Hi");
 };

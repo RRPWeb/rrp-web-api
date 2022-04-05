@@ -54,7 +54,7 @@ app.use("/", routes);
 app.use("/auth/", authRoutes);
 //app.use("/user/", authValidator, userRoutes);
 app.use("/user/", userRoutes);
-app.use(["/pdf/","/img/"],filestoreRoutes)
+app.use(["/pdf/","/img/","/md/"],filestoreRoutes)
 
 // process.env.PORT lets the port be set by Heroku
 let port = process.env.PORT || 8080;
