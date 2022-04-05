@@ -9,7 +9,8 @@ const fileUpload = require("express-fileupload");
 const dotenv = require('dotenv');
 const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
-const routes = require("./routes/test"); // import the routes
+const filestoreRoutes = require("./routes/filestore.route"); // import the routes
+const routes = require("./routes/test");
 const authValidator = require("./middlewares/authvalidator");
 
 dotenv.config();
@@ -53,7 +54,7 @@ app.use("/", routes);
 app.use("/auth/", authRoutes);
 //app.use("/user/", authValidator, userRoutes);
 app.use("/user/", userRoutes);
-app.use(["/pdf/","/img/"],routes)
+app.use(["/pdf/","/img/"],filestoreRoutes)
 
 // process.env.PORT lets the port be set by Heroku
 let port = process.env.PORT || 8080;

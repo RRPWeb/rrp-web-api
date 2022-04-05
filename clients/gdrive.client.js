@@ -9,16 +9,16 @@ const gdriveService = google.drive({ version: "v3", auth });
 exports.uploadFile = async (filename, filetype, filepath, gfolderpath) => {
   let fileMetaData = {
     name: filename,
-    parents: [gfolderpath]
+    parents: [gfolderpath],
   };
   let media = {
     mimeType: filetype,
-    body: fs.createReadStream(filepath)
+    body: fs.createReadStream(filepath),
   };
   let response = await gdriveService.files.create({
     resource: fileMetaData,
     media: media,
-    fields: "id"
+    fields: "id",
   });
 
   if (response && response.status === 200) {
@@ -30,9 +30,24 @@ exports.uploadFile = async (filename, filetype, filepath, gfolderpath) => {
 };
 exports.deleteFile = async (gdrivefileId) => {
   const response = await gdriveService.files.delete({
-    fileId: gdrivefileId
+    fileId: gdrivefileId,
   });
+
   if (response && response.status === 204) {
+    return { msg: "success" };
+  } else {
+    console.log("Error in file deletion :" + response.errors);
+    return { error: response.errors };
+  }
+};
+
+exports.getFileContent = async (gdrivefileId) => {
+  const response = await gdriveService.files.get({
+    fileId: gdrivefileId,
+  });
+
+  if (response && response.status === 200) {
+    console.log(response.data)
     return { msg: "success" };
   } else {
     console.log("Error in file deletion :" + response.errors);
