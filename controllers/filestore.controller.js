@@ -9,6 +9,7 @@ exports.getfile = async (req, res, next) => {
     const fileurl =
       "https://drive.google.com/uc?export=view&id=" + response.data;
     let fileresponse = await extFileClient.getFile(fileurl);
+    console.log(response.statusCode)
     req.pipe(fileresponse).pipe(res);
   } else {
     res.status(500).json(response);
